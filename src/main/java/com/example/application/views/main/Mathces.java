@@ -24,7 +24,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 
-@Route(value = "")
+
 
 public class Mathces extends VerticalLayout {
     HorizontalLayout datehoriz;
@@ -36,6 +36,7 @@ public class Mathces extends VerticalLayout {
     int year=0,dayOfMonth=0,month=0;
     LocalDate currentDate ;
     MacthComponent macthComponent,macthComponent1;
+    List<Match> dataMatches;
     public Mathces(){
 
         setWidth("640px");
@@ -82,17 +83,23 @@ public class Mathces extends VerticalLayout {
 
             MatchResponse match = objectMapper.readValue(requestString, MatchResponse.class);
 
-            List<Match> dataMatches = match.getData();
+            dataMatches = match.getData();
             add(datehoriz);
 
             for (Match i : dataMatches)
             {
-                add(new MacthComponent(i.getAway_team_en(), i.getHome_team_en(), i.getAway_flag(), i.getHome_flag(), i.getAway_score(), ":", i.getHome_score(), i));
+                String[] arr = i.getLocal_date().split("/");
+                LocalDate date = LocalDate.of(Integer.parseInt(arr[2].split(" ")[0]),Integer.parseInt(arr[0]), Integer.parseInt(arr[1]));
+                if(currentDate.equals(date))
+                    add(new MacthComponent(i.getAway_team_en(), i.getHome_team_en(), i.getAway_flag(), i.getHome_flag(), i.getAway_score(), ":", i.getHome_score(),i.getLocal_date(), i));
+                System.out.println(i.getLocal_date());
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
 
 
 
@@ -104,16 +111,28 @@ public class Mathces extends VerticalLayout {
 
 
     }
+    private void update()
+    {
+        this.removeAll();
+        add(datehoriz);
+        for (Match i : dataMatches) {
+            String[] arr = i.getLocal_date().split("/");
+            LocalDate date = LocalDate.of(Integer.parseInt(arr[2].split(" ")[0]),Integer.parseInt(arr[0]), Integer.parseInt(arr[1]));
+            if(currentDate.equals(date))
+                add(new MacthComponent(i.getAway_team_en(), i.getHome_team_en(), i.getAway_flag(), i.getHome_flag(), i.getAway_score(), ":", i.getHome_score(),i.getLocal_date(), i));
+
+        }
+    }
     public void nextDay(){
         currentDate= currentDate.plusDays(1);
         datetext.setText(""+ currentDate.getDayOfWeek()+", "+months[currentDate.getMonthValue()-1]+" "+currentDate.getDayOfMonth());
 
-
+        update();
     }
     public void breviousDay(){
         currentDate= currentDate.minusDays(1);
         datetext.setText(""+ currentDate.getDayOfWeek()+", "+months[currentDate.getMonthValue()-1]+" "+currentDate.getDayOfMonth());
-
+        update();
 
     }
 

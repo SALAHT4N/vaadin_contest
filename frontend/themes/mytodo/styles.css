@@ -43,3 +43,96 @@
     font-size: 32px;
     color: white;
 }
+
+[part='overlay'] {
+    background-color: #1d1d1d !important;
+    border-radius: 9px;
+
+
+}
+
+.sign-up {
+    padding: 20px;
+    background-color: #1d1d1d;
+}
+.background-color{
+    background-color: #1d1d1d;
+    color: #1d1d1d;
+    border-radius: 9px;
+
+}
+
+[part='content'] {
+    padding: 0 !important;
+}
+
+.black {
+    padding: 0 !important;
+    align-items: center;
+    align-content: space-between;
+
+}
+.sign-in,
+.black{
+    background-color:  #1d1d1d !important;
+    color: #1d1d1d !important;
+    border-radius: 9px;
+
+
+}
+.sign-in{
+    width: 420px;
+    height: 330px;
+}
+.pop-up {
+    color: #1d1d1d;
+    padding: 0 !important;
+    border-radius: 9px;
+    width: 420px;
+    height: 520px;
+
+}
+.title {
+    margin-top: 0.5em;
+    margin-bottom: 0.25em;
+}
+
+.submit-button {
+    margin-top: 0.25em;
+
+}
+.last-input {
+    margin-bottom: 20px;
+    background-color: #1d1d1d;
+}
+.input-field {
+    background-color: #1d1d1d;
+}
+.nav{
+    justify-content: space-between;
+    width: 100%;
+    background-color: #3f3d3d;
+    border-radius: 9px;
+    padding-right: 20px;
+}
+.main-pagge{
+    background-color: black;
+    height: max-content;
+}
+.tabs{
+    border-radius: 9px;
+
+}
+.search{
+    border-radius: 9px;
+    width: 400px;
+    margin-left: 10px   ;
+    background-color: #ccc;
+
+
+}
+.match-time {
+    color: #ddd;
+    font-size: 20px;
+}
+

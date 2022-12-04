@@ -19,9 +19,12 @@ public class MacthComponent extends HorizontalLayout {
     Label nopp;
     HorizontalLayout horRes;
     Label team1Name;
+    Label time;
     Label team2Name;
     Image team1Img;
     Image team2Img;
+
+    LocalDate date;
     public MacthComponent(Match match)
     {
         team1Name.setText(match.getAway_team_en());
@@ -34,16 +37,13 @@ public class MacthComponent extends HorizontalLayout {
         res2.setText(match.getHome_score());
 
     }
-    public MacthComponent(String team1, String team2, String teamImg1, String teamImg2 ,String scoreTeam1,String nop,String scoreTeam2,Match match){
+    public MacthComponent(String team1, String team2, String teamImg1, String teamImg2 ,String scoreTeam1,String nop,String scoreTeam2,String dateStr,Match match){
 
-        team1Name.setText(match.getAway_team_en());
-        team2Name.setText(match.getHome_team_en());
 
-        team1Img.setSrc(match.getAway_flag());
-        team2Img.setSrc(match.getHome_flag());
-
-        res1.setText(match.getAway_score());
-        res2.setText(match.getHome_score());
+        String[] arr = dateStr.split("/");
+        time = new Label(dateStr.split(" ")[1]);
+        time.addClassName("match-time");
+        date = LocalDate.of(Integer.parseInt(arr[2].split(" ")[0]),Integer.parseInt(arr[0]), Integer.parseInt(arr[1]));
         addClassName("match-component");
     setWidthFull();
     addClassName("match");
@@ -56,7 +56,8 @@ public class MacthComponent extends HorizontalLayout {
     horRes=new HorizontalLayout();
     horRes.add(res1,nopp,res2);
     horRes.addClassName("result");
-    verResult.add(horRes);
+
+    verResult.add(time,horRes);
     verTeam1.addClassName("ver-team");
     verTeam2.addClassName("ver-team");
     team1Name  =new Label(team1);
@@ -71,6 +72,16 @@ public class MacthComponent extends HorizontalLayout {
     verTeam2.add(team2Img,team2Name);
     verResult.setAlignItems(Alignment.CENTER);
     verResult.setJustifyContentMode(JustifyContentMode.CENTER);
+
+        team1Name.setText(match.getAway_team_en());
+        team2Name.setText(match.getHome_team_en());
+
+        team1Img.setSrc(match.getAway_flag());
+        team2Img.setSrc(match.getHome_flag());
+
+        res1.setText(match.getAway_score());
+        res2.setText(match.getHome_score());
+
     add(verTeam1,verResult,verTeam2);
 
 

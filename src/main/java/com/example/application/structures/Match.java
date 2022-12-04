@@ -1,7 +1,9 @@
 package com.example.application.structures;
 
-import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.time.LocalDateTime;
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Match {
 
 

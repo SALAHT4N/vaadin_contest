@@ -1,7 +1,9 @@
 package com.example.application.structures;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.List;
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MatchResponse {
 
     public void setStatus(String status) {
