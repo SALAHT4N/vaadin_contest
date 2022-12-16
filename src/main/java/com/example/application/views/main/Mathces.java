@@ -20,6 +20,7 @@ import okhttp3.*;
 import okhttp3.internal.http2.Header;
 
 import java.io.IOException;
+import java.net.http.HttpRequest;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
@@ -66,7 +67,7 @@ public class Mathces extends VerticalLayout {
         String url = "http://api.cup2022.ir/api/v1/match";
 
         Request request = new Request.Builder()
-                .header("Authorization" , "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzhhYzdkYWYyODA5NGFhM2FhZDVmN2UiLCJpYXQiOjE2NzAwMzk2NTMsImV4cCI6MTY3MDEyNjA1M30.DeNfABbdh1IE7o4PdLm7V8kD1lm8CcFLhZU-8eBcvd4")
+                .header("Authorization" , "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzkwZjg5MzA2ZjFjOGQwYTkxYTAxNmMiLCJpYXQiOjE2NzExNTYxMTgsImV4cCI6MTY3MTI0MjUxOH0.9lMR_iPybbhEezahUVdZspUS4pKUCdSOtR9UX0u5Mkc")
                 .url(url)
                 .build();
 
